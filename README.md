@@ -17,7 +17,7 @@
 
 ## test
 
-- docker run -it --rm --net common_backend mariadb mysql -hmysql -uroot -p -e 'select Host, User from mysql.user;'
+- docker run -it --rm --net common_backend mariadb mysql -htasks.iot-broker_mysql -uroot -p -e 'select Host, User from mysql.user;'
 
 
 
@@ -34,4 +34,4 @@
  
 ## test
 
-- docker run -it --rm --net common_backend mariadb mysql -htasks.iot-broker_mysql -uroot -p -e 'select Host, User from mysql.user;'
+- docker run -it --rm --net common_backend mariadb mysql -hmysql -uroot -p -e 'select Host, User from mysql.user;'
