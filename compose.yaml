@@ -1,0 +1,38 @@
+version: '3.7'
+
+services:
+
+  mysql:
+    image: 'mariadb'
+    container_name: mariadb
+    ports:
+      - '3306:3306'
+    restart: always
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: any
+    networks:
+      - backend
+    volumes:
+      - '/mnt/hdd/mariadb/data:/var/lib/mysql'
+      - '/mnt/hdd/mariadb/logs:/var/lib/mysql/logs'
+      - '/mnt/hdd/mariadb/etc:/etc/mysql/conf.d'
+    configs:
+      - source: mysql_conf
+        target: /etc/mysql/conf.d/config.cnf
+    environment:
+      - MYSQL_ROOT_HOST=%
+    env_file:
+      - secrets.env
+
+networks:
+
+  backend:
+    name: common_backend
+    external: true
+
+configs:
+
+  mysql_conf:
+    file: ./mysql/config.cnf
