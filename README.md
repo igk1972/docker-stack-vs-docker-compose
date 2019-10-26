@@ -29,14 +29,14 @@ Conclusion: the methods are almost comparable, but the stack is more convenient 
 - docker run -it --rm --net common_backend mariadb:10.4 mysql -htasks.iot-broker_mysql -uroot -p -e 'select Host, User from mysql.user;'
  
 ## output
-
+```
 +-----------+------+
 | Host      | User |
 +-----------+------+
 | %         | root |
 | localhost | root |
 +-----------+------+
-
+```
 
 
 
@@ -56,11 +56,11 @@ Conclusion: the methods are almost comparable, but the stack is more convenient 
 - docker run -it --rm --net common_backend mariadb:10.4 mysql -hdatabase -uroot -p -e 'select Host, User from mysql.user;'
 
 ## output
-
+```
 +-----------+------+
 | Host      | User |
 +-----------+------+
 | %         | root |
 | localhost | root |
 +-----------+------+
-
+```
