@@ -48,7 +48,7 @@ Conclusion: the methods are almost comparable, but the stack is more convenient 
 
 ## run deploy/update
 
-- rm -fr //mnt/hdd/mariadb/etc && cp -fr ./mysql  /mnt/hdd/mariadb/etc
+- rm -fr /mnt/hdd/mariadb/etc && cp -fr ./mysql  /mnt/hdd/mariadb/etc
 - docker-compose -f ./compose.yaml -p iot-broker up -d
  
 ## test
