@@ -1,10 +1,19 @@
+Step-by-step comparison of two deployment methods in docker
+
+Conclusion: the methods are almost comparable, but the stack is more convenient and functional, regardless of the dependence on the swarm.
+
+
+
 # prepair
 
+- curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+- chmod a+x /usr/local/bin/docker-compose
 - mkdir -p /mnt/hdd/mariadb
 
 
 
-# run with docker stack
+
+# A. run with docker stack
 
 ## run once only
 
@@ -17,11 +26,21 @@
 
 ## test
 
-- docker run -it --rm --net common_backend mariadb mysql -htasks.iot-broker_mysql -uroot -p -e 'select Host, User from mysql.user;'
+- docker run -it --rm --net common_backend mariadb:10.4 mysql -htasks.iot-broker_mysql -uroot -p -e 'select Host, User from mysql.user;'
+ 
+## output
+
++-----------+------+
+| Host      | User |
++-----------+------+
+| %         | root |
+| localhost | root |
++-----------+------+
 
 
 
-# run with docker-compose 
+
+# B. run with docker-compose 
 
 ## run once only
 
@@ -34,4 +53,14 @@
  
 ## test
 
-- docker run -it --rm --net common_backend mariadb mysql -hmysql -uroot -p -e 'select Host, User from mysql.user;'
+- docker run -it --rm --net common_backend mariadb:10.4 mysql -hdatabase -uroot -p -e 'select Host, User from mysql.user;'
+
+## output
+
++-----------+------+
+| Host      | User |
++-----------+------+
+| %         | root |
+| localhost | root |
++-----------+------+
+
